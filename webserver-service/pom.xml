@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>mapr-pacc-sample</artifactId>
+    <groupId>com.mapr.demos.container</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>webserver-service</artifactId>
+  <repositories>
+    <repository>
+      <id>mapr-maven</id>
+      <url>http://repository.mapr.com/maven</url>
+      <releases><enabled>true</enabled></releases>
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+  </repositories>
+
+
+  <properties>
+    <mapr-db-version>5.2.0-mapr</mapr-db-version>
+    <mapr-streams-version>0.9.0.0-mapr-1607</mapr-streams-version>
+    <jetty-version>9.4.1.v20170120</jetty-version>
+  </properties>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>com.mapr.streams</groupId>
+      <artifactId>mapr-streams</artifactId>
+      <version>${mapr-db-version}</version>
+      <!--<scope>provided</scope>-->
+    </dependency>
+    <dependency>
+      <groupId>org.apache.kafka</groupId>
+      <artifactId>kafka-clients</artifactId>
+      <version>${mapr-streams-version}</version>
+      <!--<scope>provided</scope>-->
+    </dependency>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-webapp</artifactId>
+      <version>${jetty-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-servlets</artifactId>
+      <version>${jetty-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-servlet</artifactId>
+      <version>${jetty-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-server</artifactId>
+      <version>${jetty-version}</version>
+    </dependency>
+
+  </dependencies>
+
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+
+
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>com.mapr.demos.WebServer</mainClass>
+            </manifest>
+          </archive>
+          <packagingExcludes>WEB-INF/lib/jetty*.jar,WEB-INF/lib/org.apache.taglibs.standard.glassfish*.jar,WEB-INF/lib/org.apache.jasper.glassfish*.jar,WEB-INF/lib/org.eclipse.jdt.core*.jar,WEB-INF/lib/javax.servlet.jsp*.jar,WEB-INF/lib/javax.el*.jar</packagingExcludes>
+          <escapeString>\</escapeString>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <archive>
+            <manifest>
+              <mainClass>com.mapr.demos.WebServer</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+
+
+</project>
