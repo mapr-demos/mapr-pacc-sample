@@ -8,4 +8,4 @@ COPY ./target/webserver-service-1.0-SNAPSHOT-jar-with-dependencies.jar /usr/shar
 COPY run.sh /usr/share/mapr-apps/run.sh
 RUN chmod +x /usr/share/mapr-apps/run.sh
 
-# CMD ["start", "/usr/share/mapr-apps/run.sh", "/apps/sensors:computer" , "/tmp/"]
+ CMD ["start", "/usr/share/mapr-apps/run.sh", "/apps/sensors:computer" , "/apps/logs/"]
