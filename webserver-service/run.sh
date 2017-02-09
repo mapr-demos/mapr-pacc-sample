@@ -6,7 +6,7 @@
 DIR=$MAPR_MOUNT_PATH/$MAPR_CLUSTER
 
 if [ -d "$DIR" ]; then
-    LOG_DIR=$DIR/apps/logs
+    LOG_DIR=$DIR/$2
 else
     LOG_DIR=/tmp/logs
 fi
