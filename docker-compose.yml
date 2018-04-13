@@ -10,7 +10,7 @@ services:
     network_mode: "bridge"
     build:
       context: sensor-service
-    image: maprtech/mapr-pacc-sample-sensor-producer:0.1
+    image: mapr-sensor-producer
     environment:
       - MAPR_CLDB_HOSTS=host.docker.internal
       - MAPR_CLUSTER=maprdemo.mapr.io
@@ -27,7 +27,7 @@ services:
       - /dev/fuse
     build:
       context: webserver-service
-    image: maprtech/mapr-pacc-sample-web-consumer:0.1
+    image: mapr-web-consumer
     environment:
       - MAPR_CLDB_HOSTS=host.docker.internal
       - MAPR_CLUSTER=maprdemo.mapr.io

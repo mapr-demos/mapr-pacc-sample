@@ -46,13 +46,14 @@ $ cd webserver-service
 
 $ docker build -t mapr-web-consumer .
 
-$ docker run -it --privileged --cap-add SYS_ADMIN --cap-add SYS_RESOURCE --device /dev/fuse -p 8082:8080  -e MAPR_CLDB_HOSTS=host.docker.internal -e MAPR_CLUSTER=maprdemo.mapr.io -e MAPR_CONTAINER_USER=mapr -e MAPR_MOUNT_PATH=/mapr --name web -i -t mapr-web-consumer
+$ docker run -it --privileged --cap-add SYS_ADMIN --cap-add SYS_RESOURCE --device /dev/fuse -p 8080:8080  -e MAPR_CLDB_HOSTS=host.docker.internal -e MAPR_CLUSTER=maprdemo.mapr.io -e MAPR_CONTAINER_USER=mapr -e MAPR_MOUNT_PATH=/mapr --name web -i -t mapr-web-consumer
 
 
 ```
 
-Alternatively, after following the build steps above, you can use the provided `docker-compose.yml`
-file and bring up the Sensor and Web applications by running:
+Alternatively, after building the Java applications with `mvn`, you can use the `docker-compose.yml`
+file to run the Sensor and Web applications running a local instance of the
+[MapR Container for Developers](https://maprdocs.mapr.com/home/MapRContainerDevelopers/MapRContainerDevelopersOverview.html).
 
 ```
 $ docker-compose up
