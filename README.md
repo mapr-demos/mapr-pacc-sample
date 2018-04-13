@@ -51,6 +51,14 @@ $ docker run -it --privileged --cap-add SYS_ADMIN --cap-add SYS_RESOURCE --devic
 
 ```
 
+Alternatively, after following the build steps above, you can use the provided `docker-compose.yml`
+file and bring up the Sensor and Web applications by running:
+
+```
+$ docker-compose up
+
+```
+
 Access the Web application in the host using http://localhost:8080
 
 

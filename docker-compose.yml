@@ -1,6 +1,6 @@
 # Docker Compose file for testing against the [MapR Container for Developers](https://maprdocs.mapr.com/home/MapRContainerDevelopers/MapRContainerDevelopersOverview.html)
 
-# Connect UI to http://localhost:8082 to see "Last messages - refreshed every 3 seconds"
+# Connect UI to http://localhost:8080 to see "Last messages - refreshed every 3 seconds"
 
 version: "3"
 
@@ -34,4 +34,4 @@ services:
       - MAPR_CONTAINER_USER=mapr
       - MAPR_MOUNT_PATH=/mapr
     ports:
-      - "8082:8080"
+      - "8080:8080"
