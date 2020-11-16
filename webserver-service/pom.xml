@@ -23,7 +23,7 @@
   <properties>
     <mapr-db-version>5.2.0-mapr</mapr-db-version>
     <mapr-streams-version>0.9.0.0-mapr-1607</mapr-streams-version>
-    <jetty-version>9.4.32.v20200930</jetty-version>
+    <jetty-version>9.4.34.v20201102</jetty-version>
   </properties>
 
 
